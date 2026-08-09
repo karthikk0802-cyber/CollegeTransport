@@ -13,10 +13,10 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
-    // Default center at Bangalore (12.9716, 77.5946) or first stop
-    const initialCenter = stops.length > 0 
-      ? [stops[0].stop.latitude, stops[0].stop.longitude]
-      : [12.9716, 77.5946];
+    // Center on live bus if active; fallback to first stop, fallback to Bangalore
+    const initialCenter = (busLocation && status !== 'OFFLINE')
+      ? [busLocation.latitude, busLocation.longitude]
+      : (stops.length > 0 ? [stops[0].stop.latitude, stops[0].stop.longitude] : [12.9716, 77.5946]);
 
     const map = L.map(mapContainerRef.current, {
       center: initialCenter,
@@ -151,12 +151,21 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
     if (!map) return;
 
     const bounds = [];
-    
+    const hasLiveBus = busLocation && status !== 'OFFLINE';
+
     stops.forEach(s => {
+      // If there is a live bus location, check distance to stops.
+      // Exclude stops that are in another city/region (e.g. Bangalore seed data vs real user city)
+      // to prevent extreme zooming-out. (0.3 lat/lng diff represents ~33km)
+      if (hasLiveBus) {
+        const latDiff = Math.abs(s.stop.latitude - busLocation.latitude);
+        const lngDiff = Math.abs(s.stop.longitude - busLocation.longitude);
+        if (latDiff > 0.3 || lngDiff > 0.3) return; // Skip distant stops
+      }
       bounds.push([s.stop.latitude, s.stop.longitude]);
     });
 
-    if (busLocation && status !== 'OFFLINE') {
+    if (hasLiveBus) {
       bounds.push([busLocation.latitude, busLocation.longitude]);
     }
 

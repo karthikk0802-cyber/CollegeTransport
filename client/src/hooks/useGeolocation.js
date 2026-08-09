@@ -39,6 +39,7 @@ export const useGeolocation = () => {
       const { latitude, longitude, speed } = position.coords;
       const coords = { latitude, longitude, speed: speed || 0 };
       
+      console.log('Raw GPS Geolocation Update:', coords);
       setLocation(coords);
 
       // Throttling mechanism for callbacks (e.g. socket emits)
