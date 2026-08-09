@@ -38,6 +38,26 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
       fitRouteBounds();
     }
 
+    // SMART FALLBACK: If no active bus location, try to query student's browser GPS to center on their local city
+    if (!busLocation || status === 'OFFLINE' || status === 'NOT_STARTED') {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const studentLat = position.coords.latitude;
+            const studentLng = position.coords.longitude;
+            
+            if (mapInstanceRef.current) {
+              mapInstanceRef.current.setView([studentLat, studentLng], 14);
+            }
+          },
+          (err) => {
+            console.log('Student location fallback skipped:', err.message);
+          },
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      }
+    }
+
     // Cleanup map on unmount
     return () => {
       if (mapInstanceRef.current) {
@@ -144,6 +164,9 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
       busMarkerRef.current.setIcon(busIcon);
       busMarkerRef.current.setPopupContent(`<div class="font-sans text-xs text-black p-1"><strong>Bus status:</strong> ${status}</div>`);
     }
+
+    // Auto-fit bounds whenever the bus coordinate shifts
+    fitRouteBounds();
   }, [busLocation, status]);
 
   const fitRouteBounds = () => {
