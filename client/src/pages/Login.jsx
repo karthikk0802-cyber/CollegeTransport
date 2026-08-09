@@ -60,19 +60,19 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="w-full max-w-md glass-panel p-8 md:p-10 border-zinc-800">
+      <div className="w-full max-w-md glass-panel p-8 md:p-10 border-zinc-200">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white text-black mb-4 font-bold text-xl">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-black text-white mb-4 font-bold text-xl">
             CT
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">COLLEGE TRANSPORT</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-black">COLLEGE TRANSPORT</h1>
           <p className="text-sm text-zinc-500 mt-2">
             {isRegister ? 'Create a tracking account' : 'Track your campus transit in real time'}
           </p>
         </div>
 
         {error && (
-          <div className="bg-zinc-900 border border-zinc-800 text-sm text-white px-4 py-3 rounded-xl mb-6">
+          <div className="bg-zinc-100 border border-zinc-350 text-sm text-black px-4 py-3 rounded-xl mb-6">
             {error}
           </div>
         )}
@@ -80,7 +80,7 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           {isRegister && (
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
                 Full Name *
               </label>
               <input
@@ -95,7 +95,7 @@ const Login = () => {
           )}
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
               Email Address *
             </label>
             <input
@@ -109,7 +109,7 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
               Password *
             </label>
             <input
@@ -125,7 +125,7 @@ const Login = () => {
           {isRegister && (
             <>
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
                   Role *
                 </label>
                 <select
@@ -133,15 +133,15 @@ const Login = () => {
                   onChange={(e) => setRole(e.target.value)}
                   className="glass-input cursor-pointer"
                 >
-                  <option value="student" className="bg-black text-white">Student</option>
-                  <option value="driver" className="bg-black text-white">Driver / Conductor</option>
-                  <option value="admin" className="bg-black text-white">Transport Administrator</option>
+                  <option value="student" className="bg-white text-black">Student</option>
+                  <option value="driver" className="bg-white text-black">Driver / Conductor</option>
+                  <option value="admin" className="bg-white text-black">Transport Administrator</option>
                 </select>
               </div>
 
               {role === 'student' && (
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
                     Roll Number
                   </label>
                   <input
@@ -155,7 +155,7 @@ const Login = () => {
               )}
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-650 mb-2">
                   Phone Number
                 </label>
                 <input
@@ -186,7 +186,7 @@ const Login = () => {
               setIsRegister(!isRegister);
               setError('');
             }}
-            className="text-white font-semibold hover:underline"
+            className="text-black font-semibold hover:underline"
           >
             {isRegister ? 'Sign In instead' : 'Create user login'}
           </button>

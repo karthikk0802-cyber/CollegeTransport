@@ -6,38 +6,38 @@
 
 @layer base {
   body {
-    @apply bg-black text-white font-sans min-h-screen selection:bg-white selection:text-black antialiased;
+    @apply bg-zinc-50 text-black font-sans min-h-screen selection:bg-black selection:text-white antialiased;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(24, 24, 27, 0.9) 0, transparent 50%),
-      radial-gradient(at 50% 0%, rgba(39, 39, 42, 0.4) 0, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(9, 9, 11, 0.9) 0, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(244, 244, 245, 0.9) 0, transparent 50%),
+      radial-gradient(at 50% 0%, rgba(228, 228, 231, 0.6) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(244, 244, 245, 0.9) 0, transparent 50%);
   }
 }
 
 @layer components {
-  /* Glassmorphism Styles */
+  /* Light Glassmorphism Styles */
   .glass-panel {
-    @apply bg-zinc-950/40 backdrop-blur-md border border-zinc-800/60 rounded-2xl shadow-xl transition-all duration-300;
+    @apply bg-white/70 backdrop-blur-md border border-zinc-200 shadow-lg rounded-2xl transition-all duration-300;
   }
   
   .glass-panel-light {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl transition-all duration-300;
+    @apply bg-white/90 backdrop-blur-md border border-zinc-100 shadow-md rounded-2xl transition-all duration-300;
   }
 
   .glass-input {
-    @apply w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500 transition-all duration-200;
+    @apply w-full bg-white/80 border border-zinc-300 rounded-xl px-4 py-3 text-black placeholder-zinc-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all duration-200;
   }
 
   .glass-button-primary {
-    @apply bg-white text-black font-semibold rounded-xl px-6 py-3 border border-white hover:bg-black hover:text-white transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+    @apply bg-black text-white font-semibold rounded-xl px-6 py-3 border border-black hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .glass-button-secondary {
-    @apply bg-zinc-900/50 text-white font-semibold rounded-xl px-6 py-3 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+    @apply bg-white text-black font-semibold rounded-xl px-6 py-3 border border-zinc-300 hover:bg-zinc-50 hover:border-zinc-400 transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
   }
 
   .glass-button-danger {
-    @apply bg-zinc-950/50 text-white font-semibold rounded-xl px-6 py-3 border border-zinc-800 hover:bg-white hover:text-black hover:border-white transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+    @apply bg-zinc-100 text-black font-semibold rounded-xl px-6 py-3 border border-zinc-300 hover:bg-black hover:text-white hover:border-black transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
   }
 
   /* Custom Scrollbar for list panels */
@@ -51,6 +51,6 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-zinc-800 rounded-full hover:bg-zinc-700;
+    @apply bg-zinc-300 rounded-full hover:bg-zinc-400;
   }
 }

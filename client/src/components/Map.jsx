@@ -66,47 +66,51 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
       styles: [
         {
           "elementType": "geometry",
-          "stylers": [{ "color": "#212121" }]
+          "stylers": [{ "color": "#f5f5f5" }]
         },
         {
           "elementType": "labels.icon",
-          "stylers": [{ "visibility": "off" }]
+          "stylers": [{ "visibility": "on" }, { "saturation": -100 }]
         },
         {
           "elementType": "labels.text.fill",
-          "stylers": [{ "color": "#757575" }]
+          "stylers": [{ "color": "#616161" }]
         },
         {
           "elementType": "labels.text.stroke",
-          "stylers": [{ "color": "#212121" }]
+          "stylers": [{ "color": "#f5f5f5" }]
         },
         {
-          "projectName": "dark-theme",
           "featureType": "administrative",
           "elementType": "geometry",
-          "stylers": [{ "color": "#757575" }]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
           "stylers": [{ "color": "#bdbdbd" }]
         },
         {
-          "featureType": "road",
-          "elementType": "geometry.fill",
-          "stylers": [{ "color": "#2c2c2c" }]
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [{ "color": "#eeeeee" }]
         },
         {
           "featureType": "road",
-          "elementType": "geometry.stroke",
-          "stylers": [{ "color": "#212121" }]
+          "elementType": "geometry",
+          "stylers": [{ "color": "#ffffff" }]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.fill",
+          "stylers": [{ "color": "#757575" }]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [{ "color": "#dadada" }]
         },
         {
           "featureType": "water",
           "elementType": "geometry",
-          "stylers": [{ "color": "#000000" }]
+          "stylers": [{ "color": "#c9c9c9" }]
         }
-      ] // Dark monochrome style map style configuration
+      ] // Light monochrome style map configuration
     };
 
     const map = new window.google.maps.Map(mapRef.current, mapOptions);
@@ -177,11 +181,11 @@ const Map = ({ busLocation, stops = [], status = 'NOT_STARTED' }) => {
       stopMarkersRef.current.push(marker);
     });
 
-    // Draw Polyline (Solid white line with black border for high-contrast monochrome design)
+    // Draw Polyline (Solid black line for high-contrast monochrome design)
     const polyline = new window.google.maps.Polyline({
       path: pathCoordinates,
       geodesic: true,
-      strokeColor: '#ffffff',
+      strokeColor: '#000000',
       strokeOpacity: 0.8,
       strokeWeight: 4,
       map: map

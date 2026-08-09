@@ -287,18 +287,18 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center font-sans">
+      <div className="min-h-screen bg-zinc-50 text-black flex items-center justify-center font-sans">
         <p className="text-zinc-500">Loading admin command center...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans flex flex-col">
+    <div className="min-h-screen bg-zinc-50 text-black font-sans flex flex-col">
       {/* Header */}
-      <header className="border-b border-zinc-900 bg-zinc-950/60 backdrop-blur-md px-6 py-4 flex justify-between items-center sticky top-0 z-40">
+      <header className="border-b border-zinc-200 bg-white/70 backdrop-blur-md px-6 py-4 flex justify-between items-center sticky top-0 z-40">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center font-extrabold text-sm">
+          <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-extrabold text-sm">
             CT
           </div>
           <div>
@@ -308,7 +308,7 @@ const AdminDashboard = () => {
         </div>
         <button
           onClick={logout}
-          className="text-xs uppercase tracking-wider font-semibold border border-zinc-800 px-3 py-1.5 rounded-lg hover:bg-white hover:text-black transition-all"
+          className="text-xs uppercase tracking-wider font-semibold border border-zinc-300 px-3 py-1.5 rounded-lg hover:bg-black hover:text-white transition-all"
         >
           Sign Out
         </button>
@@ -317,40 +317,40 @@ const AdminDashboard = () => {
       {/* Admin Tab Layout */}
       <div className="flex-1 flex flex-col md:flex-row">
         {/* Sidebar Nav */}
-        <aside className="w-full md:w-60 border-r border-zinc-900 p-4 space-y-1">
+        <aside className="w-full md:w-60 border-r border-zinc-200 p-4 space-y-1">
           <button
             onClick={() => setActiveTab('live')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'live' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'live' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Live Tracking ({activeTrips.length})
           </button>
           <button
             onClick={() => setActiveTab('buses')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'buses' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'buses' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Buses CRUD ({buses.length})
           </button>
           <button
             onClick={() => setActiveTab('drivers')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'drivers' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'drivers' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Drivers CRUD ({drivers.length})
           </button>
           <button
             onClick={() => setActiveTab('students')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'students' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'students' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Students CRUD ({students.length})
           </button>
           <button
             onClick={() => setActiveTab('routes')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'routes' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'routes' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Routes & Stops
           </button>
           <button
             onClick={() => setActiveTab('history')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'history' ? 'bg-white text-black' : 'text-zinc-400 hover:bg-zinc-900/50 hover:text-white'}`}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors ${activeTab === 'history' ? 'bg-black text-white' : 'text-zinc-650 hover:bg-zinc-100 hover:text-black'}`}
           >
             Trip History
           </button>
@@ -359,12 +359,12 @@ const AdminDashboard = () => {
         {/* Content Pane */}
         <main className="flex-1 p-6 space-y-6 overflow-y-auto">
           {error && (
-            <div className="bg-zinc-900 border border-zinc-800 text-xs text-white p-4 rounded-xl text-center">
+            <div className="bg-zinc-100 border border-zinc-300 text-xs text-black p-4 rounded-xl text-center">
               {error}
             </div>
           )}
           {success && (
-            <div className="bg-white border border-zinc-800 text-xs text-black p-4 rounded-xl text-center font-bold">
+            <div className="bg-black border border-black text-xs text-white p-4 rounded-xl text-center font-bold">
               {success}
             </div>
           )}
@@ -375,7 +375,7 @@ const AdminDashboard = () => {
           {activeTab === 'live' && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-180px)] min-h-[500px]">
               {/* Active Trip List */}
-              <div className="lg:col-span-1 glass-panel p-4 border-zinc-800 flex flex-col space-y-4 overflow-hidden h-full">
+              <div className="lg:col-span-1 glass-panel p-4 border-zinc-200 flex flex-col space-y-4 overflow-hidden h-full">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Active Transit Trips</h3>
                 <div className="flex-1 overflow-y-auto space-y-3 custom-scrollbar pr-1">
                   {activeTrips.length === 0 ? (
@@ -387,20 +387,20 @@ const AdminDashboard = () => {
                       <div
                         key={trip._id}
                         onClick={() => handleSelectTrip(trip)}
-                        className={`p-4 border rounded-xl cursor-pointer transition-all ${selectedTrip?._id === trip._id ? 'bg-white text-black border-white' : 'bg-zinc-950/40 border-zinc-850 text-white hover:border-zinc-700'}`}
+                        className={`p-4 border rounded-xl cursor-pointer transition-all ${selectedTrip?._id === trip._id ? 'bg-black text-white border-black' : 'bg-white border-zinc-200 text-black hover:border-zinc-400'}`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
                             <p className="font-extrabold text-lg">{trip.bus.busCode}</p>
-                            <p className={`text-[10px] uppercase font-mono ${selectedTrip?._id === trip._id ? 'text-zinc-600' : 'text-zinc-500'}`}>
+                            <p className={`text-[10px] uppercase font-mono ${selectedTrip?._id === trip._id ? 'text-zinc-400' : 'text-zinc-500'}`}>
                               {trip.bus.plateNumber}
                             </p>
                           </div>
-                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${trip.bus.status === 'LIVE' ? (selectedTrip?._id === trip._id ? 'bg-black text-white border-black' : 'bg-white text-black border-white') : 'bg-zinc-900 border-zinc-850 text-zinc-400'}`}>
+                          <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${trip.bus.status === 'LIVE' ? (selectedTrip?._id === trip._id ? 'bg-white text-black border-white' : 'bg-black text-white border-black') : 'bg-zinc-100 border-zinc-300 text-zinc-500'}`}>
                             {trip.bus.status}
                           </span>
                         </div>
-                        <div className={`mt-3 pt-3 border-t text-xs space-y-1 ${selectedTrip?._id === trip._id ? 'border-zinc-200 text-zinc-800' : 'border-zinc-900 text-zinc-400'}`}>
+                        <div className={`mt-3 pt-3 border-t text-xs space-y-1 ${selectedTrip?._id === trip._id ? 'border-zinc-800 text-zinc-300' : 'border-zinc-200 text-zinc-650'}`}>
                           <p><strong>Driver:</strong> {trip.driver?.name}</p>
                           <p><strong>Started:</strong> {new Date(trip.startTime).toLocaleTimeString()}</p>
                         </div>
@@ -410,7 +410,7 @@ const AdminDashboard = () => {
                               e.stopPropagation();
                               handleForceStop(trip._id);
                             }}
-                            className={`flex-1 text-[10px] font-bold uppercase tracking-wider py-1.5 rounded-lg border transition-all ${selectedTrip?._id === trip._id ? 'bg-black text-white border-black hover:bg-zinc-900' : 'bg-zinc-900 text-white border-zinc-800 hover:bg-white hover:text-black hover:border-white'}`}
+                            className={`flex-1 text-[10px] font-bold uppercase tracking-wider py-1.5 rounded-lg border transition-all ${selectedTrip?._id === trip._id ? 'bg-white text-black border-white hover:bg-zinc-100' : 'bg-black text-white border-black hover:bg-zinc-800'}`}
                           >
                             Force Stop
                           </button>
@@ -422,11 +422,11 @@ const AdminDashboard = () => {
               </div>
 
               {/* Map display */}
-              <div className="lg:col-span-2 glass-panel p-2 border-zinc-800 h-full flex flex-col">
-                <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-900">
+              <div className="lg:col-span-2 glass-panel p-2 border-zinc-200 h-full flex flex-col">
+                <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-200">
                   <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Live Satellite Display</span>
                   {selectedTrip && (
-                    <span className="text-xs font-bold text-white">
+                    <span className="text-xs font-bold text-black">
                       Monitoring {selectedTrip.bus.busCode}
                     </span>
                   )}
@@ -457,10 +457,10 @@ const AdminDashboard = () => {
                 </button>
               </div>
 
-              <div className="glass-panel overflow-hidden border-zinc-800">
+              <div className="glass-panel overflow-hidden border-zinc-200">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-zinc-900 text-xs text-zinc-400 font-semibold uppercase bg-zinc-950/40">
+                    <tr className="border-b border-zinc-200 text-xs text-zinc-650 font-semibold uppercase bg-zinc-100/40">
                       <th className="p-4">Bus Code</th>
                       <th className="p-4">Plate Number</th>
                       <th className="p-4">Assigned Driver</th>
@@ -469,33 +469,33 @@ const AdminDashboard = () => {
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-900 text-xs">
+                  <tbody className="divide-y divide-zinc-200 text-xs">
                     {buses.length === 0 ? (
                       <tr>
                         <td colSpan="6" className="p-6 text-center text-zinc-500 italic">No buses configured</td>
                       </tr>
                     ) : (
                       buses.map((bus) => (
-                        <tr key={bus._id} className="hover:bg-zinc-900/10">
-                          <td className="p-4 font-bold text-white">{bus.busCode}</td>
-                          <td className="p-4 font-mono text-zinc-400">{bus.plateNumber}</td>
+                        <tr key={bus._id} className="hover:bg-zinc-100/10">
+                          <td className="p-4 font-bold text-black">{bus.busCode}</td>
+                          <td className="p-4 font-mono text-zinc-600">{bus.plateNumber}</td>
                           <td className="p-4">{bus.assignedDriver?.name || 'Unassigned'}</td>
                           <td className="p-4">{bus.assignedRoute?.name || 'Unassigned'}</td>
                           <td className="p-4">
-                            <span className="bg-zinc-950 border border-zinc-800 px-2 py-0.5 rounded text-[10px]">
+                            <span className="bg-zinc-100 border border-zinc-300 px-2 py-0.5 rounded text-[10px]">
                               {bus.status}
                             </span>
                           </td>
                           <td className="p-4 text-right space-x-2">
                             <button
                               onClick={() => handleOpenEditModal('editBus', bus)}
-                              className="text-zinc-400 hover:text-white underline"
+                              className="text-zinc-600 hover:text-black underline"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteItem('bus', bus._id)}
-                              className="text-zinc-650 hover:text-white underline"
+                              className="text-zinc-500 hover:text-black underline"
                             >
                               Delete
                             </button>
@@ -524,10 +524,10 @@ const AdminDashboard = () => {
                 </button>
               </div>
 
-              <div className="glass-panel overflow-hidden border-zinc-800">
+              <div className="glass-panel overflow-hidden border-zinc-200">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-zinc-900 text-xs text-zinc-400 font-semibold uppercase bg-zinc-950/40">
+                    <tr className="border-b border-zinc-200 text-xs text-zinc-650 font-semibold uppercase bg-zinc-100/40">
                       <th className="p-4">Name</th>
                       <th className="p-4">Email</th>
                       <th className="p-4">Phone</th>
@@ -535,28 +535,28 @@ const AdminDashboard = () => {
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-900 text-xs">
+                  <tbody className="divide-y divide-zinc-200 text-xs">
                     {drivers.length === 0 ? (
                       <tr>
                         <td colSpan="5" className="p-6 text-center text-zinc-500 italic">No drivers registered</td>
                       </tr>
                     ) : (
                       drivers.map((driver) => (
-                        <tr key={driver._id} className="hover:bg-zinc-900/10">
-                          <td className="p-4 font-bold text-white">{driver.name}</td>
-                          <td className="p-4 text-zinc-400">{driver.email}</td>
+                        <tr key={driver._id} className="hover:bg-zinc-100/10">
+                          <td className="p-4 font-bold text-black">{driver.name}</td>
+                          <td className="p-4 text-zinc-600">{driver.email}</td>
                           <td className="p-4">{driver.phone || 'N/A'}</td>
                           <td className="p-4 font-bold">{driver.assignedBus?.busCode || 'None'}</td>
                           <td className="p-4 text-right space-x-2">
                             <button
                               onClick={() => handleOpenEditModal('editDriver', driver)}
-                              className="text-zinc-400 hover:text-white underline"
+                              className="text-zinc-600 hover:text-black underline"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteItem('driver', driver._id)}
-                              className="text-zinc-650 hover:text-white underline"
+                              className="text-zinc-500 hover:text-black underline"
                             >
                               Delete
                             </button>
@@ -585,10 +585,10 @@ const AdminDashboard = () => {
                 </button>
               </div>
 
-              <div className="glass-panel overflow-hidden border-zinc-800">
+              <div className="glass-panel overflow-hidden border-zinc-200">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-zinc-900 text-xs text-zinc-400 font-semibold uppercase bg-zinc-950/40">
+                    <tr className="border-b border-zinc-200 text-xs text-zinc-650 font-semibold uppercase bg-zinc-100/40">
                       <th className="p-4">Name</th>
                       <th className="p-4">Roll Number</th>
                       <th className="p-4">Email</th>
@@ -596,28 +596,28 @@ const AdminDashboard = () => {
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-900 text-xs">
+                  <tbody className="divide-y divide-zinc-200 text-xs">
                     {students.length === 0 ? (
                       <tr>
                         <td colSpan="5" className="p-6 text-center text-zinc-500 italic">No students registered</td>
                       </tr>
                     ) : (
                       students.map((student) => (
-                        <tr key={student._id} className="hover:bg-zinc-900/10">
-                          <td className="p-4 font-bold text-white">{student.name}</td>
-                          <td className="p-4 font-mono text-zinc-400">{student.rollNumber || 'N/A'}</td>
+                        <tr key={student._id} className="hover:bg-zinc-100/10">
+                          <td className="p-4 font-bold text-black">{student.name}</td>
+                          <td className="p-4 font-mono text-zinc-600">{student.rollNumber || 'N/A'}</td>
                           <td className="p-4 text-zinc-500">{student.email}</td>
                           <td className="p-4 font-bold">{student.assignedBus?.busCode || 'None'}</td>
                           <td className="p-4 text-right space-x-2">
                             <button
                               onClick={() => handleOpenEditModal('editStudent', student)}
-                              className="text-zinc-400 hover:text-white underline"
+                              className="text-zinc-600 hover:text-black underline"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteItem('student', student._id)}
-                              className="text-zinc-650 hover:text-white underline"
+                              className="text-zinc-500 hover:text-black underline"
                             >
                               Delete
                             </button>
@@ -650,27 +650,27 @@ const AdminDashboard = () => {
 
                 <div className="space-y-4">
                   {routes.length === 0 ? (
-                    <div className="glass-panel p-6 border-zinc-800 text-center text-zinc-500 italic text-xs">
+                    <div className="glass-panel p-6 border-zinc-200 text-center text-zinc-500 italic text-xs">
                       No routes defined yet
                     </div>
                   ) : (
                     routes.map((route) => (
-                      <div key={route._id} className="glass-panel p-5 border-zinc-800 space-y-4">
+                      <div key={route._id} className="glass-panel p-5 border-zinc-200 space-y-4">
                         <div className="flex justify-between items-start">
                           <div>
-                            <h3 className="font-bold text-sm text-white">{route.name}</h3>
+                            <h3 className="font-bold text-sm text-black">{route.name}</h3>
                             <p className="text-xs text-zinc-500 mt-0.5">{route.description || 'No description'}</p>
                           </div>
                           <div className="space-x-3 text-xs">
                             <button
                               onClick={() => handleOpenEditModal('editRoute', route)}
-                              className="text-zinc-400 hover:text-white underline animate-pulse"
+                              className="text-zinc-600 hover:text-black underline"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDeleteItem('route', route._id)}
-                              className="text-zinc-650 hover:text-white underline"
+                              className="text-zinc-500 hover:text-black underline"
                             >
                               Delete
                             </button>
@@ -678,13 +678,13 @@ const AdminDashboard = () => {
                         </div>
 
                         {/* Stop Order list */}
-                        <div className="flex flex-wrap gap-2 pt-2 border-t border-zinc-900">
+                        <div className="flex flex-wrap gap-2 pt-2 border-t border-zinc-250">
                           {route.stops
                             ?.sort((a, b) => a.sequence - b.sequence)
                             .map((s, idx) => (
                               <span
                                 key={idx}
-                                className="text-[10px] bg-zinc-950 border border-zinc-900 text-zinc-450 px-2 py-0.5 rounded font-medium"
+                                className="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-2 py-0.5 rounded font-medium"
                               >
                                 {idx + 1}. {s.stop?.name || 'Unknown stop'}
                               </span>
@@ -708,37 +708,37 @@ const AdminDashboard = () => {
                   </button>
                 </div>
 
-                <div className="glass-panel overflow-hidden border-zinc-800">
+                <div className="glass-panel overflow-hidden border-zinc-200">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="border-b border-zinc-900 text-xs text-zinc-400 font-semibold uppercase bg-zinc-950/40">
+                      <tr className="border-b border-zinc-200 text-xs text-zinc-650 font-semibold uppercase bg-zinc-100/40">
                         <th className="p-4">Name</th>
                         <th className="p-4">Latitude</th>
                         <th className="p-4">Longitude</th>
                         <th className="p-4 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-zinc-900 text-xs">
+                    <tbody className="divide-y divide-zinc-200 text-xs">
                       {stops.length === 0 ? (
                         <tr>
                           <td colSpan="4" className="p-6 text-center text-zinc-500 italic">No stops configured</td>
                         </tr>
                       ) : (
                         stops.map((stop) => (
-                          <tr key={stop._id} className="hover:bg-zinc-900/10">
-                            <td className="p-4 font-bold text-white">{stop.name}</td>
-                            <td className="p-4 font-mono text-zinc-400">{stop.latitude.toFixed(6)}</td>
-                            <td className="p-4 font-mono text-zinc-400">{stop.longitude.toFixed(6)}</td>
+                          <tr key={stop._id} className="hover:bg-zinc-100/10">
+                            <td className="p-4 font-bold text-black">{stop.name}</td>
+                            <td className="p-4 font-mono text-zinc-600">{stop.latitude.toFixed(6)}</td>
+                            <td className="p-4 font-mono text-zinc-600">{stop.longitude.toFixed(6)}</td>
                             <td className="p-4 text-right space-x-2">
                               <button
                                 onClick={() => handleOpenEditModal('editStop', stop)}
-                                className="text-zinc-400 hover:text-white underline"
+                                className="text-zinc-600 hover:text-black underline"
                               >
                                 Edit
                               </button>
                               <button
                                 onClick={() => handleDeleteItem('stop', stop._id)}
-                                className="text-zinc-650 hover:text-white underline"
+                                className="text-zinc-500 hover:text-black underline"
                               >
                                 Delete
                               </button>
@@ -759,10 +759,10 @@ const AdminDashboard = () => {
           {activeTab === 'history' && (
             <div className="space-y-6">
               <h2 className="text-lg font-bold">Past Trips History Logs</h2>
-              <div className="glass-panel overflow-hidden border-zinc-800">
+              <div className="glass-panel overflow-hidden border-zinc-200">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-zinc-900 text-xs text-zinc-400 font-semibold uppercase bg-zinc-950/40">
+                    <tr className="border-b border-zinc-200 text-xs text-zinc-655 font-semibold uppercase bg-zinc-100/40">
                       <th className="p-4">Bus</th>
                       <th className="p-4">Driver</th>
                       <th className="p-4">Start Time</th>
@@ -770,20 +770,20 @@ const AdminDashboard = () => {
                       <th className="p-4">Outcome</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-zinc-900 text-xs font-mono">
+                  <tbody className="divide-y divide-zinc-200 text-xs font-mono">
                     {tripHistory.length === 0 ? (
                       <tr>
                         <td colSpan="5" className="p-6 text-center text-zinc-500 font-sans italic">No trip history recorded</td>
                       </tr>
                     ) : (
                       tripHistory.map((trip) => (
-                        <tr key={trip._id} className="hover:bg-zinc-900/10">
-                          <td className="p-4 font-bold text-white font-sans">{trip.bus?.busCode || 'Deleted Bus'}</td>
+                        <tr key={trip._id} className="hover:bg-zinc-100/10">
+                          <td className="p-4 font-bold text-black font-sans">{trip.bus?.busCode || 'Deleted Bus'}</td>
                           <td className="p-4 font-sans">{trip.driver?.name || 'Deleted Driver'}</td>
-                          <td className="p-4 text-zinc-400">{new Date(trip.startTime).toLocaleString()}</td>
-                          <td className="p-4 text-zinc-400">{trip.endTime ? new Date(trip.endTime).toLocaleString() : 'N/A'}</td>
+                          <td className="p-4 text-zinc-500">{new Date(trip.startTime).toLocaleString()}</td>
+                          <td className="p-4 text-zinc-500">{trip.endTime ? new Date(trip.endTime).toLocaleString() : 'N/A'}</td>
                           <td className="p-4">
-                            <span className={`text-[10px] font-bold font-sans uppercase ${trip.status === 'COMPLETED' ? 'text-zinc-350' : 'text-zinc-500'}`}>
+                            <span className={`text-[10px] font-bold font-sans uppercase ${trip.status === 'COMPLETED' ? 'text-zinc-500' : 'text-zinc-800'}`}>
                               {trip.status}
                             </span>
                           </td>
@@ -802,15 +802,15 @@ const AdminDashboard = () => {
       {/* MONOCHROME DIALOG MODAL LAYOUT */}
       {/* ======================================================== */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
-          <div className="w-full max-w-lg glass-panel p-6 border-zinc-800 flex flex-col max-h-[90vh]">
-            <div className="flex justify-between items-center mb-6 pb-2 border-b border-zinc-900">
-              <h3 className="font-bold text-md capitalize text-white">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
+          <div className="w-full max-w-lg glass-panel p-6 border-zinc-200 flex flex-col max-h-[90vh]">
+            <div className="flex justify-between items-center mb-6 pb-2 border-b border-zinc-200">
+              <h3 className="font-bold text-md capitalize text-black">
                 {modalType.replace(/([A-Z])/g, ' $1').trim()}
               </h3>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-zinc-500 hover:text-white font-bold"
+                className="text-zinc-500 hover:text-black font-bold"
               >
                 ✕
               </button>
@@ -822,7 +822,7 @@ const AdminDashboard = () => {
               {(modalType === 'createBus' || modalType === 'editBus') && (
                 <>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Bus Code *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Bus Code *</label>
                     <input
                       type="text"
                       className="glass-input"
@@ -833,7 +833,7 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Plate Number *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Plate Number *</label>
                     <input
                       type="text"
                       className="glass-input"
@@ -844,28 +844,28 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Assign Driver</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Assign Driver</label>
                     <select
                       className="glass-input"
                       value={formData.assignedDriver || ''}
                       onChange={(e) => setFormData({ ...formData, assignedDriver: e.target.value })}
                     >
-                      <option value="" className="bg-black text-white">Select Driver (Optional)</option>
+                      <option value="" className="bg-white text-black">Select Driver (Optional)</option>
                       {drivers.map((d) => (
-                        <option key={d._id} value={d._id} className="bg-black text-white">{d.name}</option>
+                        <option key={d._id} value={d._id} className="bg-white text-black">{d.name}</option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Assign Route</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Assign Route</label>
                     <select
                       className="glass-input"
                       value={formData.assignedRoute || ''}
                       onChange={(e) => setFormData({ ...formData, assignedRoute: e.target.value })}
                     >
-                      <option value="" className="bg-black text-white">Select Route (Optional)</option>
+                      <option value="" className="bg-white text-black">Select Route (Optional)</option>
                       {routes.map((r) => (
-                        <option key={r._id} value={r._id} className="bg-black text-white">{r.name}</option>
+                        <option key={r._id} value={r._id} className="bg-white text-black">{r.name}</option>
                       ))}
                     </select>
                   </div>
@@ -876,7 +876,7 @@ const AdminDashboard = () => {
               {(modalType === 'createDriver' || modalType === 'editDriver') && (
                 <>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Full Name *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Full Name *</label>
                     <input
                       type="text"
                       className="glass-input"
@@ -887,7 +887,7 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Email Address *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Email Address *</label>
                     <input
                       type="email"
                       className="glass-input"
@@ -899,7 +899,7 @@ const AdminDashboard = () => {
                   </div>
                   {modalType === 'createDriver' && (
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Password *</label>
+                      <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Password *</label>
                       <input
                         type="password"
                         className="glass-input"
@@ -911,7 +911,7 @@ const AdminDashboard = () => {
                     </div>
                   )}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Phone Number</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Phone Number</label>
                     <input
                       type="tel"
                       className="glass-input"
@@ -927,7 +927,7 @@ const AdminDashboard = () => {
               {(modalType === 'createStudent' || modalType === 'editStudent') && (
                 <>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Full Name *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Full Name *</label>
                     <input
                       type="text"
                       className="glass-input"
@@ -938,7 +938,7 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Roll Number</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Roll Number</label>
                     <input
                       type="text"
                       className="glass-input"
@@ -948,7 +948,7 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Email Address *</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Email Address *</label>
                     <input
                       type="email"
                       className="glass-input"
@@ -960,7 +960,7 @@ const AdminDashboard = () => {
                   </div>
                   {modalType === 'createStudent' && (
                     <div>
-                      <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Password *</label>
+                      <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Password *</label>
                       <input
                         type="password"
                         className="glass-input"
@@ -972,7 +972,7 @@ const AdminDashboard = () => {
                     </div>
                   )}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Phone Number</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Phone Number</label>
                     <input
                       type="tel"
                       className="glass-input"
@@ -982,15 +982,15 @@ const AdminDashboard = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Assign Bus</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-655 font-semibold mb-2">Assign Bus</label>
                     <select
                       className="glass-input"
                       value={formData.assignedBus || ''}
                       onChange={(e) => setFormData({ ...formData, assignedBus: e.target.value })}
                     >
-                      <option value="" className="bg-black text-white">Select Bus (Optional)</option>
+                      <option value="" className="bg-white text-black">Select Bus (Optional)</option>
                       {buses.map((b) => (
-                        <option key={b._id} value={b._id} className="bg-black text-white">{b.busCode}</option>
+                        <option key={b._id} value={b._id} className="bg-white text-black">{b.busCode}</option>
                       ))}
                     </select>
                   </div>
@@ -1064,25 +1064,25 @@ const AdminDashboard = () => {
                   
                   {/* Stops sequencing select */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-zinc-400 font-semibold mb-2">Configure Waypoints (Sequence)</label>
+                    <label className="block text-xs uppercase tracking-wider text-zinc-650 font-semibold mb-2">Configure Waypoints (Sequence)</label>
                     {stops.length === 0 ? (
                       <p className="text-xs text-zinc-500 italic">Please configure Stops first before building routes</p>
                     ) : (
-                      <div className="space-y-2 max-h-48 overflow-y-auto bg-zinc-950/60 p-3 rounded-xl border border-zinc-900 custom-scrollbar">
+                      <div className="space-y-2 max-h-48 overflow-y-auto bg-zinc-100/60 p-3 rounded-xl border border-zinc-200 custom-scrollbar">
                         {stops.map((stop) => {
                           // Find existing stop sequence if editing
                           const existingStop = formData.stops?.find(s => s.stop === stop._id);
                           const currentSeqVal = existingStop ? existingStop.sequence : '';
 
                           return (
-                            <div key={stop._id} className="flex items-center justify-between gap-4 text-xs">
+                            <div key={stop._id} className="flex items-center justify-between gap-4 text-xs text-black">
                               <span className="truncate font-semibold">{stop.name}</span>
                               <div className="flex items-center gap-2">
                                 <span className="text-[10px] text-zinc-500 uppercase tracking-wider">Seq:</span>
                                 <input
                                   type="number"
                                   placeholder="none"
-                                  className="w-16 bg-zinc-900 border border-zinc-800 rounded px-2 py-1 text-center"
+                                  className="w-16 bg-white border border-zinc-300 rounded px-2 py-1 text-center text-black"
                                   value={currentSeqVal}
                                   onChange={(e) => {
                                     const val = e.target.value;
