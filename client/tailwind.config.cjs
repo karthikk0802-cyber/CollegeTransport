@@ -10,7 +10,6 @@ module.exports = {
         sans: ['Poppins', 'sans-serif'],
       },
       colors: {
-        // Strict monochrome palette
         black: '#000000',
         white: '#ffffff',
         gray: {
