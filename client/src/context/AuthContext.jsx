@@ -10,8 +10,11 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [loading, setLoading] = useState(true);
 
-  // Set base URL for axios
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  // Set base URL for axios (dynamic hostname replacement for phone debugging)
+  const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL = rawApiUrl.includes('localhost') 
+    ? rawApiUrl.replace('localhost', window.location.hostname) 
+    : rawApiUrl;
   axios.defaults.baseURL = API_URL;
 
   // Set authorization header if token exists

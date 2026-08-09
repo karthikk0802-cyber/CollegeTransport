@@ -7,7 +7,10 @@ export const connectSocket = (token) => {
     socket.disconnect();
   }
 
-  const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+  const rawSocketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+  const socketUrl = rawSocketUrl.includes('localhost')
+    ? rawSocketUrl.replace('localhost', window.location.hostname)
+    : rawSocketUrl;
 
   socket = io(socketUrl, {
     auth: { token },
