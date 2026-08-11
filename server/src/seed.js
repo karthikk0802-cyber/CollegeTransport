@@ -11,12 +11,12 @@ const seed = async () => {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/college-bus-tracking');
     console.log('Connected to database for seeding...');
 
-    // Clear existing data (except the student user)
+    // Clear existing data (except the student users)
     await Bus.deleteMany({});
     await Route.deleteMany({});
     await Stop.deleteMany({});
     await Trip.deleteMany({});
-    await User.deleteMany({ email: { $ne: 'karthikk0802@gmail.com' } });
+    await User.deleteMany({ email: { $nin: ['karthikk0802@gmail.com', 'student@college.edu'] } });
 
     console.log('Cleared old seed data.');
 
@@ -90,6 +90,24 @@ const seed = async () => {
         rollNumber: '20BCE0001'
       });
       console.log('Created default student karthikk0802@gmail.com / student123');
+    }
+
+    // 7. Create/Assign student@college.edu
+    const student2 = await User.findOne({ email: 'student@college.edu' });
+    if (student2) {
+      student2.assignedBus = bus._id;
+      await student2.save();
+      console.log(`Assigned Bus C10 to student user: ${student2.email}`);
+    } else {
+      await User.create({
+        name: 'Test Student',
+        email: 'student@college.edu',
+        password: 'student123',
+        role: 'student',
+        assignedBus: bus._id,
+        rollNumber: '20BCE9999'
+      });
+      console.log('Created default student student@college.edu / student123');
     }
 
     console.log('Database seeding successfully completed.');
